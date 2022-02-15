@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--XML映射文件-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.UserMapper">
+    <!--添加用户-->
+    <insert id="add">
+        insert into user
+        values(null, #{username}, #{password});
+    </insert>
+
+    <!--根据用户名与密码查询用户-->
+    <select id="select" resultType="org.example.pojo.User">
+        select *
+        from user
+        where username = #{username} and
+              password = #{password};
+    </select>
+
+    <!--根据用户名查询用户-->
+    <select id="selectByUsername" resultType="org.example.pojo.User">
+        select *
+        from user
+        where username = #{username};
+    </select>
+</mapper>
